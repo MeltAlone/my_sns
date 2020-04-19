@@ -2,9 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>登录</title>
+    <link rel="stylesheet" href="./css/login.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./js/axios.js"></script>
 </head>
 <body>
-$END$
+    <div class="loginBox" id="login_box">
+        <h2 class="title">Soul社交用户登录</h2>
+        <p><input type="text" placeholder="手机号/邮箱" id="login_phone"></p>
+        <p><input type="password" placeholder="密码" id="login_password"></p>
+        <p><button v-on:click="sendLogin()">登录</button></p>
+    </div>
+    <script src="js/login.js"></script>
 </body>
 </html>

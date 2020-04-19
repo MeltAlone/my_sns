@@ -1,0 +1,59 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.loginBox{
+    position: absolute;
+    width: 400px;
+    top: 20px;
+}
+.loginBox .title{
+    position:relative;
+    padding:20px 0 20px 25px;
+    font-size:20px;
+    text-align: center;
+}
+
+.loginBox .title::after{
+    content:"";
+    position:absolute;
+    display:block;
+    width:6px;
+    height:25px;
+    left:0;
+    top:24px;
+    background-color: #00c1de;
+}
+
+.loginBox p{
+    margin-top: 20px;
+}
+
+.loginBox p input{
+    height:50px;
+    padding-left:10px;
+    width:100%;
+    box-sizing:border-box;
+    font-size:16px;
+    border:1px #eee solid;
+    border-radius:10px;
+}
+
+.loginBox p button {
+    border:medium none;
+    width:100%;
+    cursor:pointer;
+    height:50px;
+    text-align:center;
+    line-height:50px;
+    font-size:20px;
+    border-radius:10px;
+}

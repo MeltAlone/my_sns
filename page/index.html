@@ -2,9 +2,110 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Soul社交</title>
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./js/axios.js"></script>
+
 </head>
 <body>
-$END$
+    <header class="header">
+        <div class="container">
+            <a href="/" class="title">Soul社交</a>
+            <ul class="menu">
+                <li><a href="/">首页</a></li>
+                <li><a href="/sitemap.html">地图</a></li>
+                <li><a href="/about.html">关于</a></li>
+                <li><a href="/guestbook.html">留言</a></li>
+                <li><a href="/chat.html">聊天室</a></li>
+            </ul>
+            <div class="login_bar">
+                <a href="/login.html" class="login">登录</a>
+                |
+                <a href="/register.html" class="register">注册</a>
+            </div>
+            <div class="search_bar">
+                <input type="text" placeholder="输入关键词查找">
+                <button>搜索</button>
+            </div>
+        </div>
+    </header>
+    <div class="content">
+        <div class="content_left">
+            <div class="every_day" id="every_day">
+                <span>每日一句</span>
+                <p v-html="getContent"></p>
+            </div>
+            <div class="article_list" id="article_list">
+                <div class="article" v-for="article in articleList">
+                    <div class="article_user"><a href="/">易林贵</a>发布了动态</div>
+                    <a :href="article.link" class="article_title">{{ article.title }}</a>
+                    <p class="article_content">{{ article.content }}</p>
+                    <div class="article_foot">
+                        发布于{{ article.date }} | 浏览{{ article.views }}次 | Tags: {{ article.tags }}
+                    </div>
+                </div>
+                <div class="page_tool">
+                    <ul>
+                        <li v-for="pageNum in pageNumList" v-on:click="jumpTo(pageNum.page)" v-bind:class="{now_page:(pageNum.text == page)}">{{pageNum.text}}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="content_right">
+            <div class="right_module" id="random_tags">
+                <div>随机标签云</div>
+                <a href="/" v-for="tag in tags" :style="{ color:randomColor(), fontSize:randomSize() }">{{ tag.text }}</a>
+            </div>
+            <div class="right_module" id="new_hot">
+                <div>最近热门</div>
+                <ul>
+                    <li v-for="temp in titleList">
+                        <a href="/">{{ temp.title }}</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="right_module" id="new_comments">
+                <div>最新评论</div>
+                <ul>
+                    <li v-for="comment in commentList">
+                        <div>
+                            <span>{{ comment.name }}</span>
+                            <span class="pull_right">{{ new Date(comment.date).getFullYear() }}年{{ new Date(comment.date).getMonth() + 1 }}月{{ new Date(comment.date).getDay() }}日{{ new Date(comment.date).getHours() + 1}}时{{ new Date(comment.date).getMinutes() }}分</span>
+                        </div>
+                        <p>{{ comment.comment }}</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="right_module">
+                <div>友情链接</div>
+                <span><a href="/">挨踢茶馆</a></span>
+                <span><a href="/">百度百科</a></span>
+                <span><a href="/">思否论坛</a></span>
+                <span><a href="/">维基百科</a></span>
+                <span><a href="/">中国知网</a></span>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="content">
+            <div class="wx_box">
+                <img src="./img/wx.jpg" alt="">
+                <span>我的微信</span>
+            </div>
+            <div class="statement">
+                <p>
+                    <b>网站声明：</b>
+                </p>
+                <p>1、本站为易林贵毕业设计所用，个人可以使用，但是未经许可不得用于任何商业目的。</p>
+                <p>2、所有文章未经授权禁止转载、摘编、复制或建立镜像，如有违反，追究法律责任。举报邮箱：1532998154@qq.com</p>
+                <p>Copyright © www.ylg.com All Rights Reserved. 备案号：豫ICP备11232373号-1</p>
+            </div>
+        </div>
+    </footer>
+    <script src="./js/index.js"></script>
+    <script src="./js/base.js"></script>
+
 </body>
 </html>

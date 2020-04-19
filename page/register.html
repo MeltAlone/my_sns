@@ -2,9 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>注册</title>
+    <link rel="stylesheet" href="./css/register.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./js/axios.js"></script>
 </head>
 <body>
-$END$
+    <div class="regBox" id="reg_box">
+        <h2 class="title">Soul社交用户注册</h2>
+        <p><input type="text" id="reg_name" placeholder="输入用户名"></p>
+        <p><input type="text" id="reg_phone" placeholder="输入登录手机号" pattern="^1[34578][0-9]{9}$"></p>
+        <p><input type="email" id="reg_email" placeholder="请输入邮箱" pattern="^[a-zA-Z0-9]+([-_.][a-zA-Z0-9]+)*@[a-zA-Z0-9]+([-_.][a-zA-Z0-9]+)*\.[a-z]{2,}$"></p>
+        <p><input type="password" id="reg_password" placeholder="输入密码" pattern="^\d{4}$"></p>
+        <p><input type="password" id="reg_password2" placeholder="再次确认密码"></p>
+        <p>
+            <input type="text" placeholder="验证码" id="comment_code">
+            <span v-html="vcode" v-on:click="changeCode()"></span>
+        </p>
+        <p><button v-on:click="sendComment()">注册</button></p>
+    </div>
+    <script src="js/register.js"></script>
 </body>
 </html>

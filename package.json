@@ -1,0 +1,25 @@
+{
+  "name": "my_sns",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MeltAlone/my_sns.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MeltAlone/my_sns/issues"
+  },
+  "homepage": "https://github.com/MeltAlone/my_sns#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "svg-captcha": "^1.4.0"
+  }
+}

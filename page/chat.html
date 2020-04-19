@@ -2,9 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>聊天室</title>
+    <link rel="stylesheet" href="./css/chat.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="./js/axios.js"></script>
 </head>
 <body>
-$END$
+<header class="header">
+    <div class="container">
+        <a href="/" class="title">Soul社交</a>
+        <ul class="menu">
+            <li><a href="/">首页</a></li>
+            <li><a href="/sitemap.html">地图</a></li>
+            <li><a href="/about.html">关于</a></li>
+            <li><a href="/guestbook.html">留言</a></li>
+            <li><a href="/chat.html">聊天室</a></li>
+        </ul>
+        <div class="login_bar">
+            <a href="/" class="login">登录</a>
+            |
+            <a href="/" register>注册</a>
+        </div>
+        <div class="search_bar">
+            <input type="text" placeholder="输入关键词查找">
+            <button>搜索</button>
+        </div>
+    </div>
+</header>
+<div class="content">
+    <div id="chat">
+        <div class="name">
+            <span>姓名：</span>
+            <input type="text" value="" v-model="name" placeholder="请输入用户名">
+        </div>
+        <ul>
+            <li v-for="(msg, index) in msgList">
+                <div>
+                    <span v-bind:class="{red: msg.name == name, blue: msg.name != name}">{{msg.name}} : </span>
+                    <span v-html="getDate(msg.ctime)"></span><br/>
+                    <span>{{msg.msg}}</span>
+                </div>
+            </li>
+        </ul>
+        <input type="text" value="" v-model="sendText" v-on:keydown.enter="sendMsg" id="sendMsg" placeholder="请输入内容，按回车键入">
+    </div>
+</div>
+<div class="horse"></div>
+
+<script src="./js/chat.js"></script>
 </body>
 </html>
