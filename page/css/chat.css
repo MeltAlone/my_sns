@@ -13,7 +13,7 @@ body{
 .header {
     width: 100%;
     height: 50px;
-    background: #1c2327;
+    background: #2F4F4F;
     position: absolute;
 }
 
@@ -72,7 +72,7 @@ body{
     color: #fff;
 }
 
-.login_bar{
+.header .login_bar{
     position: absolute;
     right: 300px;
     top: 0px;
@@ -80,12 +80,16 @@ body{
     color: #fff;
 }
 
-.login_bar > a {
+.header .login_bar > a {
     padding: 0 10px;
     color: #fff;
 }
 
-.search_bar{
+.header .login_bar > a > span{
+    color: #00ff00;
+}
+
+.header .search_bar{
     position: absolute;
     top: 0px;
     right: 0px;
@@ -96,7 +100,7 @@ body{
     justify-content: center;
 }
 
-.search_bar > input{
+.header .search_bar > input{
     position: absolute;
     right: 60px;
     top: calc(50% - 17px);
@@ -108,7 +112,7 @@ body{
     border: 1px solid;
 }
 
-.search_bar > button{
+.header .search_bar > button{
     position: absolute;
     right: 0px;
     top: calc(50% - 17px);
@@ -128,6 +132,7 @@ body{
     position: absolute;
     top: 80px;
     width: 100%;
+    height: 800px;
 }
 .menu{
     height: 45px;

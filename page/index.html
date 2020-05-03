@@ -12,18 +12,18 @@
 <body>
     <header class="header">
         <div class="container">
-            <a href="/" class="title">Soul社交</a>
+            <a href="/index.html" class="title">Soul社交</a>
             <ul class="menu">
-                <li><a href="/">首页</a></li>
+                <li><a href="/index.html">首页</a></li>
                 <li><a href="/sitemap.html">地图</a></li>
                 <li><a href="/about.html">关于</a></li>
                 <li><a href="/guestbook.html">留言</a></li>
                 <li><a href="/chat.html">聊天室</a></li>
             </ul>
-            <div class="login_bar">
-                <a href="/login.html" class="login">登录</a>
+            <div class="login_bar" id="login_bar">
+                <a href="/about.html" class="login">用户：<span>{{ userName }}</span></a>
                 |
-                <a href="/register.html" class="register">注册</a>
+                <a v-on:click="exit()" class="register">注销</a>
             </div>
             <div class="search_bar">
                 <input type="text" placeholder="输入关键词查找">
@@ -39,7 +39,7 @@
             </div>
             <div class="article_list" id="article_list">
                 <div class="article" v-for="article in articleList">
-                    <div class="article_user"><a href="/">易林贵</a>发布了动态</div>
+                    <div class="article_user"><a href="/about.html">{{ article.uname }}</a>发布了动态</div>
                     <a :href="article.link" class="article_title">{{ article.title }}</a>
                     <p class="article_content">{{ article.content }}</p>
                     <div class="article_foot">
@@ -56,13 +56,13 @@
         <div class="content_right">
             <div class="right_module" id="random_tags">
                 <div>随机标签云</div>
-                <a href="/" v-for="tag in tags" :style="{ color:randomColor(), fontSize:randomSize() }">{{ tag.text }}</a>
+                <a :href="tag.link" v-for="tag in tags" :style="{ color:randomColor(), fontSize:randomSize() }">{{ tag.text }}</a>
             </div>
             <div class="right_module" id="new_hot">
                 <div>最近热门</div>
                 <ul>
                     <li v-for="temp in titleList">
-                        <a href="/">{{ temp.title }}</a>
+                        <a :href="temp.link">{{ temp.title }}</a>
                     </li>
                 </ul>
             </div>

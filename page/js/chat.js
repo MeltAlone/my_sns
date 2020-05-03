@@ -1,7 +1,7 @@
 var chat = new Vue({
     el: "#chat",
     data: {
-        name: "",
+        name: '',
         msgList: [],
         sendText: ""
     },
@@ -17,7 +17,7 @@ var chat = new Vue({
             }).catch(function (resp) {
             });
             this.sendText = "";
-        }
+        },
     },
     computed: {
         getDate: function () {
@@ -28,6 +28,11 @@ var chat = new Vue({
         }
     },
     created: function () {
+
+
+        this.name =  getCookie("curUser")
+
+
         setInterval(function () {
             axios({
                 method: "get",
@@ -49,3 +54,22 @@ var chat = new Vue({
         }, 1000);
     }
 });
+
+function getCookie(cname) {
+    let name = cname + "=";
+    let cookie = document.cookie.split(';');
+    for(let i = 0, len = cookie.length; i < len; i++) {
+        let c = cookie[i].trim();
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+var userSpan = document.getElementById("curUserName");
+var username = getCookie("curUser");
+(function (){
+    if(username){
+        userSpan.innerText = username;
+    }
+}())

@@ -1,15 +1,15 @@
-var fs =require("fs");
-var globalConfig = require("./config");
+let fs =require("fs");
+let globalConfig = require("./config");
 
-var controllerSet = [];
-var pathMap = new Map();
+let controllerSet = [];
+let pathMap = new Map();
 
-var files = fs.readdirSync(globalConfig["web_path"]);
+let files = fs.readdirSync(globalConfig["web_path"]);
 
-for (var i = 0 ; i < files.length ; i ++) {
-    var temp = require("./" + globalConfig["web_path"] + "/" + files[i]);
+for (let i = 0 ; i < files.length ; i ++) {
+    let temp = require("./" + globalConfig["web_path"] + "/" + files[i]);
     if (temp.path) {
-        for (var [key, value] of temp.path) {
+        for (let [key, value] of temp.path) {
             if (pathMap.get(key) == null) {
                 pathMap.set(key, value);
             } else {

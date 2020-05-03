@@ -1,10 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/userManage.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue-router/3.1.3/vue-router.min.js"></script>
+    <script src="./js/axios.js"></script>
 </head>
+
 <body>
-$END$
+<div class="wrapper" id="app">
+    <div class="header">
+        <span>后台用户管理</span>
+    </div>
+    <div class="left-menu">
+        <dl>
+            <dt>用户管理</dt>
+            <router-link tag="dd" to="/">用户列表</router-link>
+            <router-link tag="dd" to="/add-user">添加用户</router-link>
+        </dl>
+    </div>
+    <div class="right-content">
+        <router-view></router-view>
+    </div>
+</div>
+<script src="./js/userManage.js"></script>
+
 </body>
+
 </html>

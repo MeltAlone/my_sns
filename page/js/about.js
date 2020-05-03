@@ -82,3 +82,17 @@ var sendComment = new Vue({
         this.changeCode();
     }
 });
+
+var AboutMe = new Vue({
+    el: "#about_me",
+    data:{
+        person:{
+            name: "马大哈",
+            sex:"男",
+            phone:"15660159156",
+            email:"1532998154@qq.com",
+            address:"中国",
+            description:"这个人很懒，没留下什么",
+        }
+    }
+})

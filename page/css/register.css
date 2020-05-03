@@ -50,7 +50,11 @@ body{
     width: 50%;
 }
 
-.regBox p button {
+.regBox p:nth-of-type(7) {
+    display: block;
+    text-decoration: none;
+    background: #00c1de;
+    color: #ffffff;
     border:medium none;
     width:100%;
     cursor:pointer;

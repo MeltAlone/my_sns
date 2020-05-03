@@ -1,5 +1,5 @@
 function getNow() {
-    return parseInt(Date.now() / 1000);
+    return Date.now().toString();
 }
 
 module.exports.getNow = getNow;

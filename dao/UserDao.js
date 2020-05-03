@@ -1,8 +1,8 @@
 var dbutil = require("./DBUtil");
 
-function insertUser(name, phone, email, password, success) {
-    var insertSql = "insert into user (`name`, `phone`, `email`, `password`) values (?, ?, ?, ?)";
-    var params = [name, phone, email, password];
+function insertUser(name, sex, phone, email, address, description, password, success) {
+    var insertSql = "insert into user (`name`, `sex`, `phone`, `email`, `address`,`description`,`password`) values (?, ?, ?, ?, ?, ?, ?)";
+    var params = [name, sex, phone, email, address, description, password];
 
     var connection = dbutil.createConnection();
     connection.connect();
@@ -20,7 +20,21 @@ function queryUserByPhone(phone, success) {
     var querySql = "select * from user where phone = ?;";
     var params = [phone];
 
-    console.log(querySql);
+    var connection = dbutil.createConnection();
+    connection.connect();
+    connection.query(querySql, params, function (error, result) {
+        if (error == null) {
+            success(result);
+        } else {
+            console.log(error);
+        }
+    });
+    connection.end();
+}
+
+function queryAllUser(success) {
+    var querySql = "select * from user order by id desc;";
+    var params = [];
 
     var connection = dbutil.createConnection();
     connection.connect();
@@ -37,3 +51,4 @@ function queryUserByPhone(phone, success) {
 
 module.exports.insertUser = insertUser;
 module.exports.queryUserByPhone = queryUserByPhone;
+module.exports.queryAllUser = queryAllUser;

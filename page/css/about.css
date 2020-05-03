@@ -16,9 +16,18 @@
     border-bottom: 1px solid #b9b9b9;
 }
 
+.description p span {
+    margin-right: 15px;
+}
+
 .description p {
     margin-top: 5px;
     padding: 0px 0px 0px 10px;
+}
+
+.description p a{
+    color: #00ff00;
+    font-weight: 800;
 }
 
 .blog_comments {

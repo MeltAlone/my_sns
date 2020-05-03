@@ -66,7 +66,7 @@ var sendComment = new Vue({
                 var bid = -2;
                 var reply = document.getElementById("comment_reply").value;
                 var replyName = document.getElementById("comment_reply_name").value;
-                var name = document.getElementById("comment_name").value;
+                var name = getCookie("curUser");
                 var email = document.getElementById("comment_email").value;
                 var content = document.getElementById("comment_content").value;
                 axios({
@@ -82,3 +82,15 @@ var sendComment = new Vue({
         this.changeCode();
     }
 });
+
+function getCookie(cname) {
+    let name = cname + "=";
+    let cookie = document.cookie.split(';');
+    for(let i = 0, len = cookie.length; i < len; i++) {
+        let c = cookie[i].trim();
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}

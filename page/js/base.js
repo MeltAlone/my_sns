@@ -26,7 +26,7 @@ var randomTags = new Vue({
         }).then(function (resp) {
             var result = [];
             for (var i = 0 ; i < resp.data.data.length ; i ++) {
-                result.push({text:resp.data.data[i].tag, link:"/?tag=" + resp.data.data[i].tag});
+                result.push({text:resp.data.data[i].tag, link:"/index.html?tag=" + resp.data.data[i].tag});
             }
             randomTags.tags = result;
         });
@@ -60,7 +60,8 @@ var newComments = new Vue({
     data: {
         commentList: []
     },
-    created: function () {
+
+created: function () {
         axios({
             method: "get",
             url: "/queryNewComments"
@@ -70,7 +71,8 @@ var newComments = new Vue({
             for (var i = 0 ; i < resp.data.data.length ; i ++) {
                 var temp = {};
                 temp.name = resp.data.data[i].user_name;
-                temp.date = resp.data.data[i].ctime;
+
+                temp.date = parseInt(resp.data.data[i].ctime);
                 temp.comment = resp.data.data[i].comments;
                 result.push(temp);
             }
@@ -78,3 +80,25 @@ var newComments = new Vue({
         });
     }
 })
+try {
+    var userSpan = document.getElementById("curUserName");
+    function getCookie(cname) {
+        let name = cname + "=";
+        let cookie = document.cookie.split(';');
+        for(let i = 0, len = cookie.length; i < len; i++) {
+            let c = cookie[i].trim();
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+    var username = getCookie("curUser");
+    (function (){
+        if(username){
+            userSpan.innerText = username;
+        }
+    }())
+}catch (e) {
+
+}

@@ -1,10 +1,10 @@
-var express = require("express");
-var globalConfig = require("./config");
-var loader = require("./loader");
+let express = require("express");
+let globalConfig = require("./config");
+let loader = require("./loader");
 
-var app = new express();
+let app = new express();
 
-app.use(express.static("./page/"));
+app.use(express.static("./page/", {index: "login.html"}));
 
 app.post("/editEveryDay", loader.get("/editEveryDay"));
 app.get("/queryEveryDay", loader.get("/queryEveryDay"));
@@ -29,8 +29,9 @@ app.get("/queryNewComments", loader.get("/queryNewComments"));
 app.get("/queryByTag", loader.get("/queryByTag"));
 app.get("/queryByTagCount", loader.get("/queryByTagCount"));
 
-app.get("/addUser", loader.get("/addUser"));
+app.post("/addUser", loader.get("/addUser"));
 app.get("/queryUserByPhone", loader.get("/queryUserByPhone"));
+app.get("/queryAllUser", loader.get("/queryAllUser"));
 
 
 app.listen(globalConfig.port, function() {

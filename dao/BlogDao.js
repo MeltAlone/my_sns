@@ -1,8 +1,8 @@
 var dbutil = require("./DBUtil");
 
-function insertBlog(title, content, tags, views, ctime, utime, success) {
-    var insertSql = "insert into blog (`title`, `content`, `tags`, `views`, `ctime`, `utime`) values (?, ?, ?, ?, ?, ?)";
-    var params = [title, content, tags, views, ctime, ctime];
+function insertBlog(title, content, tags, views, ctime, utime, uname, success) {
+    var insertSql = "insert into blog (`title`, `content`, `tags`, `views`, `ctime`, `utime`, `uname` ) values (?, ?, ?, ?, ?, ?, ?)";
+    var params = [title, content, tags, views, ctime, ctime, uname];
 
     var connection = dbutil.createConnection();
     connection.connect();

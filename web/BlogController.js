@@ -64,7 +64,7 @@ function editBlog(request, response) {
     var params = url.parse(request.url, true).query;
     var tags = params.tags.replace(/ /g, "").replace("，", ",");
     request.on("data", function (data) {
-        blogDao.insertBlog(params.title, data.toString(), tags, 0, timeUtil.getNow(), timeUtil.getNow(), function (result) {
+        blogDao.insertBlog(params.title, data.toString(), tags, 0, timeUtil.getNow(), timeUtil.getNow(), params.uname, function (result) {
             response.writeHead(200);
             response.write(respUtil.writeResult("success", "添加成功", null));
             response.end();
@@ -82,7 +82,7 @@ function editBlog(request, response) {
 path.set("/editBlog", editBlog);
 
 function queryTag(tag, blogId) {
-    tagsDao.queyrTag(tag, function (result) {
+    tagsDao.queryTag(tag, function (result) {
         console.log()
         if (result == null || result.length == 0) {
             insertTag(tag, blogId);

@@ -19,8 +19,8 @@
             <input type="text" placeholder="验证码" id="comment_code">
             <span v-html="vcode" v-on:click="changeCode()"></span>
         </p>
-        <p><button v-on:click="sendComment()">注册</button></p>
+        <p v-on:click="sendComment()">注册</p>
     </div>
-    <script src="js/register.js"></script>
+    <script src="./js/register.js"></script>
 </body>
 </html>

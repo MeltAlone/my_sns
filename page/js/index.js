@@ -68,12 +68,14 @@ var articleList = new Vue({
                         var list = [];
                         for (var i = 0 ; i < result.length ; i ++) {
                             var temp = {};
+                            var tempTime = parseInt(result[i].ctime);
                             temp.title = result[i].title;
                             temp.content = result[i].content;
-                            temp.date = result[i].ctime;
+                            temp.date = `${new Date(tempTime).getFullYear()}年${new Date(tempTime).getMonth() + 1} 月${new Date(tempTime).getDay()}日${new Date(tempTime).getHours() + 1}时${new Date(tempTime).getMinutes()}分`
                             temp.views = result[i].views;
                             temp.tags = result[i].tags;
                             temp.id = result[i].id;
+                            temp.uname = result[i].uname;
                             temp.link = "/blog_detail.html?bid=" + result[i].id;
                             list.push(temp);
                         }
@@ -98,9 +100,10 @@ var articleList = new Vue({
                         var list = [];
                         for (var i = 0 ; i < result.length ; i ++) {
                             var temp = {};
+                            var tempTime = parseInt(result[i].ctime);
                             temp.title = result[i].title;
                             temp.content = result[i].content;
-                            temp.date = result[i].ctime;
+                            temp.date = `${new Date(tempTime).getFullYear()}年${new Date(tempTime).getMonth() + 1} 月${new Date(tempTime).getDay()}日${new Date(tempTime).getHours() + 1}时${new Date(tempTime).getMinutes()}分`
                             temp.views = result[i].views;
                             temp.tags = result[i].tags;
                             temp.id = result[i].id;
@@ -152,3 +155,46 @@ var articleList = new Vue({
         this.getPage(this.page, this.pageSize);
     }
 })
+
+var loginBar = new Vue({
+    el: "#login_bar",
+    data: {
+        userName: "未登录"
+    },
+    methods: {
+        getCurName () {
+             loginBar.userName = getCookie("curUser");
+        },
+        exit(){
+            delCookie("curUser");
+            window.location.href = "./login.html"
+        }
+    },
+})
+
+
+window.onload = function () {
+    loginBar.getCurName();
+}
+
+function getCookie(cname) {
+    let name = cname + "=";
+    let cookie = document.cookie.split(';');
+    for(let i = 0, len = cookie.length; i < len; i++) {
+        let c = cookie[i].trim();
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+function setCookie(c_name,value,expire) {
+    var date=new Date()
+    date.setSeconds(date.getSeconds()+expire)
+    document.cookie=c_name+ "="+escape(value)+"; expires="+date.toGMTString()
+}
+
+function delCookie(c_name){
+    setCookie(c_name, "", -1)
+}

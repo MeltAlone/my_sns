@@ -12,18 +12,18 @@
 <body>
 <header class="header">
     <div class="container">
-        <a href="/" class="title">Soul社交</a>
+        <a href="/index.html" class="title">Soul社交</a>
         <ul class="menu">
-            <li><a href="/">首页</a></li>
+            <li><a href="/index.html">首页</a></li>
             <li><a href="/sitemap.html">地图</a></li>
             <li><a href="/about.html">关于</a></li>
             <li><a href="/guestbook.html">留言</a></li>
             <li><a href="/chat.html">聊天室</a></li>
         </ul>
         <div class="login_bar">
-            <a href="/" class="login">登录</a>
+            <a href="/about.html" class="login">用户：<span id="curUserName">马大哈</span></a>
             |
-            <a href="/" register>注册</a>
+            <a href="/login.html" class="register">注销</a>
         </div>
         <div class="search_bar">
             <input type="text" placeholder="输入关键词查找">
@@ -35,7 +35,7 @@
     <div class="content_left">
         <div class="blog" id="blog_detail">
             <div class="blog_title">{{title}}</div>
-            <div class="blog_msg">作者：易林贵 标签：{{tags}} 发布于：{{ctime}} 浏览（{{views}}）</div>
+            <div class="blog_msg">作者：易林贵 <br> 标签：{{tags}} <br> 发布于：{{ctime}} <br> 浏览：（{{views}}）</div>
             <div class="blog_content" v-html="content"></div>
         </div>
 
@@ -68,13 +68,13 @@
     <div class="content_right">
         <div class="right_module" id="random_tags">
             <div>随机标签云</div>
-            <a href="/" v-for="tag in tags" :style="{ color:randomColor(), fontSize:randomSize() }">{{ tag.text }}</a>
+            <a :href="tag.link" v-for="tag in tags" :style="{ color:randomColor(), fontSize:randomSize() }">{{ tag.text }}</a>
         </div>
         <div class="right_module" id="new_hot">
             <div>最近热门</div>
             <ul>
                 <li v-for="temp in titleList">
-                    <a href="/">{{ temp.title }}</a>
+                    <a :href="temp.link">{{ temp.title }}</a>
                 </li>
             </ul>
         </div>

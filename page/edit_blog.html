@@ -16,14 +16,26 @@
     <link href="./bootstrap-wysiwyg-master/index.css" rel="stylesheet">
     <script src="./bootstrap-wysiwyg-master/bootstrap-wysiwyg.js"></script>
     <script>
+        function getCookie(cname) {
+            let name = cname + "=";
+            let cookie = document.cookie.split(';');
+            for(let i = 0, len = cookie.length; i < len; i++) {
+                let c = cookie[i].trim();
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
         function submit() {
             alert("提交");
             var content = $("#editor").html();
             var title = $("#title").val();
             var tags = $("#tags").val();
+            let username = getCookie("curUser")
 
             $.ajax({
-                url: "/editBlog?title=" + title + "&tags=" + tags,
+                url: "/editBlog?title=" + title + "&tags=" + tags + "&uname=" + username,
                 method: "post",
                 data: content,
                 success: function(resp) {

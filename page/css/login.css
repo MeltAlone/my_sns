@@ -47,7 +47,24 @@ body{
     border-radius:10px;
 }
 
-.loginBox p button {
+.loginBox .login-btn{
+    background: #00c1de;
+    color: #ffffff;
+    border:medium none;
+    width:100%;
+    cursor:pointer;
+    height:50px;
+    text-align:center;
+    line-height:50px;
+    font-size:20px;
+    border-radius:10px;
+}
+
+.loginBox p a {
+    display: block;
+    text-decoration: none;
+    background: #00c1de;
+    color: #ffffff;
     border:medium none;
     width:100%;
     cursor:pointer;
