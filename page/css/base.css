@@ -160,7 +160,7 @@ body{
 .right_module{
     display: inline-block;
     width: 100%;
-    background: #1f1f1f;
+    background: #2F4F4F;
     color: #ffffff;
     border-radius: 10px;
     text-align: left;
@@ -172,9 +172,10 @@ body{
 .right_module div{
     display: block;
     text-align: left;
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: 600;
     padding: 15px 5px 15px 0px;
-    color: blue;
+    color: #008B8B;
 }
 
 .right_module > a{
@@ -182,6 +183,10 @@ body{
     font-size: 14px;
     color: #00f;
     margin-right: 5px;
+}
+
+.right_module  div  span {
+    font-weight: normal;
 }
 
 .right_module > ul > li{

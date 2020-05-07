@@ -1,8 +1,8 @@
 var randomTags = new Vue({
     el: "#random_tags",
     data: {
-        tags: ["css", "html5", "javascript", "jquery", "webpack", "react", "vuex", "typescript"]
-    },
+        tags: []
+},
     computed: {
         randomColor: function () {
             return function () {

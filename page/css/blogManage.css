@@ -1,0 +1,122 @@
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+html, body,.wrapper {
+    height: 100%;
+    background-color: #eee;
+    position: relative;
+}
+button {
+    cursor: pointer;
+}
+.wrapper .header {
+    height: 70px;
+    width: 100%;
+    line-height: 70px;
+    background: #00c1de;
+    position: absolute;
+    z-index: 100;
+    text-align: center;
+    line-height: 70px;
+    top: 0;
+    left: 0;
+}
+.wrapper .header span{
+    font-size: 30px;
+    font-weight: 800;
+    color: #2F4F4F;
+}
+.left-menu {
+    width: 200px;
+    background-color: #2F4F4F;
+    height: calc(100vh - 70px);
+    position: absolute;
+    top: 70px;
+    left: 0px;
+    box-sizing: border-box;
+}
+.left-menu dl {
+    font-size: 14px;
+    color: #b3bcc5;
+}
+.left-menu dl dt {
+    font-weight: bold;
+    padding: 10px;
+}
+.left-menu dl dd {
+    height: 40px;
+    line-height: 40px;
+    padding-left: 30px;
+    cursor: pointer;
+}
+.left-menu dl dd.active {
+    background-color: #00c1de;
+    color: 	#F0FFF0;
+}
+.right-content {
+    min-width: 800px;
+    width: calc(100vw - 200px);
+    height: calc(100vh - 70px);
+    position:absolute;
+    left: 200px;
+    top: 70px;
+}
+
+
+table {
+    width: 100%;
+    font-size: 14px;
+    color: #354457;
+    min-width: 800px;
+}
+table thead {
+    background-color: #e3e8ee;
+}
+table th, table td {
+    text-align: center;
+    padding: 10px;
+    width: calc(100% / 7);
+}
+
+
+
+table th {
+    color: #646987;
+}
+table tbody {
+    background-color: #fff;
+}
+table .btn {
+    padding: 3px 10px;
+    border: none;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+table .btn.del {
+    background-color: #d9534f;
+}
+table .btn.del:hover {
+    background-color: #c9302c;
+}
+
+
+.right-content .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100vw - 200px);
+    height: calc(100vh - 70px);
+    overflow-y: scroll;
+}
+
+ .blog-item {
+    height: 50px;
+    overflow: hidden;
+    text-wrap: none;
+    text-overflow: ellipsis;
+}

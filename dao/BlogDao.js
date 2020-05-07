@@ -62,6 +62,23 @@ function queryBlogById(id, success) {
         }
     });
     connection.end();
+
+}
+
+function queryBlogByName(name, success) {
+    var querySql = "select * from blog where uname = ?;";
+    var params = [name];
+
+    var connection = dbutil.createConnection();
+    connection.connect();
+    connection.query(querySql, params, function (error, result) {
+        if (error == null) {
+            success(result);
+        } else {
+            console.log(error);
+        }
+    });
+    connection.end();
 }
 
 function queryAllBlog(success) {
@@ -112,6 +129,23 @@ function queryHotBlog(size, success) {
     connection.end();
 }
 
+function deleteBlogById(id, success) {
+    console.log(id);
+    var querySql = "delete from blog where id = ?;";
+    var params = [id];
+
+    var connection = dbutil.createConnection();
+    connection.connect();
+    connection.query(querySql, params, function (error, result) {
+        if (error == null) {
+            success(result);
+        } else {
+            console.log(error);
+        }
+    });
+    connection.end();
+}
+
 
 module.exports.insertBlog = insertBlog;
 module.exports.queryBlogByPage = queryBlogByPage;
@@ -120,3 +154,6 @@ module.exports.queryBlogById = queryBlogById;
 module.exports.queryAllBlog = queryAllBlog;
 module.exports.addViews = addViews;
 module.exports.queryHotBlog = queryHotBlog;
+module.exports.deleteBlogById = deleteBlogById;
+
+module.exports.queryBlogByName = queryBlogByName;

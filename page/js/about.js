@@ -85,14 +85,53 @@ var sendComment = new Vue({
 
 var AboutMe = new Vue({
     el: "#about_me",
-    data:{
-        person:{
-            name: "马大哈",
-            sex:"男",
-            phone:"15660159156",
-            email:"1532998154@qq.com",
-            address:"中国",
-            description:"这个人很懒，没留下什么",
-        }
+    data: {
+        person: {},
+        change_email: "",
+        change_address: "",
+        change_description: "",
+        showDiong: false
+    },
+    methods: {
+        changeMsg(){
+            var name = this.getCookie("curUser");
+            axios({
+                method: "get",
+                url: `/changeUserMsg?name=${name}&email=${this.change_email}&address=${this.change_address}&description=${this.change_description}`
+            }).then(resp => {
+                console.log(resp);
+                AboutMe.showDiong = false;
+            })
+        },
+        showD(){
+            this.showDiong = true;
+        },
+        fadeD(){
+            this.showDiong = false;
+        },
+        //获取cookie
+        getCookie: function (cname) {
+            var name = cname + "=";
+            var ca = document.cookie.split(';');
+            for (var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                console.log(c)
+                while (c.charAt(0) == ' ') c = c.substring(1);
+                if (c.indexOf(name) != -1){
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        },
+    },
+    created(){
+        let name = this.getCookie("curUser");
+        axios({
+            method: "get",
+            url: "/queryUserByName?name=" + name,
+        }).then(res => {
+            AboutMe.person = res.data.data[0];
+        })
     }
 })
+

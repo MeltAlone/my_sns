@@ -36,7 +36,7 @@ var regBox = new Vue({
                     return;
                 }
                 if (phone.length !== 11){
-                    alter("手机号非法")；
+                    alert("手机号非法");
                     return;
                 }
 

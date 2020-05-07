@@ -1,10 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/blogManage.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./js/axios.js"></script>
 </head>
+
 <body>
-$END$
+<div class="wrapper" id="app">
+    <div class="header">
+        <span>后台动态管理</span>
+    </div>
+    <div class="left-menu">
+        <dl>
+            <dt>动态管理</dt>
+            <dd @click="changeToList()">动态列表</dd>
+        </dl>
+    </div>
+    <div class="right-content">
+        <div class="content">
+            <table border="0" >
+                <thead>
+                <tr>
+                    <th>用户</th>
+                    <th>标题</th>
+                    <th>标签</th>
+                    <th>内容</th>
+                    <th>浏览次数</th>
+                    <th>发布时间</th>
+                    <th>删除</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="(item, index) in blogList" v-bind:key="item.id">
+                    <td>{{ item.uname }}</td>
+                    <td>{{ item.title }}</td>
+                    <td>{{ item.tags }}</td>
+                    <td>{{ item.content }}</td>
+                    <td>{{ item.views }}</td>
+                    <td>{{ item.ctime }}</td>
+                    <td>
+                        <button @click="removeThis(index, item.id)" class="btn del">删除</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+<script src="./js/blogManage.js"></script>
+
 </body>
+
 </html>

@@ -16,7 +16,10 @@
     "url": "https://github.com/MeltAlone/my_sns/issues"
   },
   "homepage": "https://github.com/MeltAlone/my_sns#readme",
-  "dependencies": {},
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "sql": "^0.78.0"
+  },
   "devDependencies": {
     "express": "^4.17.1",
     "mysql": "^2.18.1",

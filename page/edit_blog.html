@@ -28,7 +28,6 @@
             return "";
         }
         function submit() {
-            alert("提交");
             var content = $("#editor").html();
             var title = $("#title").val();
             var tags = $("#tags").val();
@@ -47,6 +46,9 @@
                     console.log(resp);
                 }
             });
+        }
+        function back() {
+            window.location.href = "/about.html"
         }
     </script>
 </head>
@@ -111,7 +113,9 @@
     <div id="editor">
         Go ahead&hellip;
     </div>
-    <button onclick="submit()" class="submitBtn">提交</button>
+    <button style="background-color: #3CB371" onclick="submit()" class="submitBtn">提交</button>
+    <button style="margin-left: 765px; background-color: #3CB371" onclick="back()" class="submitBtn">返回</button>
+
 </div>
 <script>
     $(function(){

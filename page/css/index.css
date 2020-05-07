@@ -1,9 +1,9 @@
 .every_day {
-    background: #fff;
+    background: rgba(255,255,255,.7);
     width: 96%;
     text-align: left;
     border-radius: 5px;
-    box-shadow: 3px 4px 3px #888;
+    box-shadow: 3px 4px 3px #2F4F4F;
     padding: 10px 15px;
 }
 
@@ -33,7 +33,7 @@
 
 .article_user{
     color: #eeeeee;
-    background: #1f1f1f;
+    background: rgba(0,139,139, .7);
     width: 100%;
     padding: 5px 15px;
     font-size: 14px;
@@ -58,7 +58,7 @@
 .article_title{
     display: inline-block;
     font-size: 20px;
-    color: #13102b;
+    color: #2F4F4F;
     padding: 20px 10px 5px 10px;
     text-align: left;
 }
@@ -79,7 +79,7 @@
 
 .article_foot{
     color: #eeeeee;
-    background: #1f1f1f;
+    background: rgba(0,139,139, .7);
     width: 100%;
     padding: 5px 15px;
     font-size: 14px;

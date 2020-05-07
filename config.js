@@ -11,3 +11,5 @@ for (let i = 0 ; i < configArr.length ; i ++) {
 }
 
 module.exports = globalConfig;
+
+// 将配置文件读取并以对象形式导出

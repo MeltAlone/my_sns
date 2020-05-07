@@ -5,7 +5,8 @@ var blogDetail = new Vue({
         content: "",
         ctime: "",
         tags: "",
-        views: ""
+        views: "",
+        name: ""
     },
     computed: {
 
@@ -31,11 +32,13 @@ var blogDetail = new Vue({
             url: "/queryBlogById?bid=" + bid
         }).then(function (resp) {
             var result = resp.data.data[0];
+            var tempTime = parseInt(result.ctime);
             blogDetail.title = result.title;
             blogDetail.content = result.content;
-            blogDetail.ctime = result.ctime;
+            blogDetail.ctime = `${new Date(tempTime).getMonth() + 1} 月${new Date(tempTime).getDay()}日${new Date(tempTime).getHours() + 1}时`;
             blogDetail.tags = result.tags;
             blogDetail.views = result.views;
+            blogDetail.name = result.uname;
         }).catch(function (resp) {
             console.log("请求失败");
         });
@@ -48,6 +51,7 @@ var sendComment = new Vue({
         vcode: "",
         rightCode: ""
     },
+
     computed: {
         changeCode: function() {
             return function () {
@@ -80,11 +84,25 @@ var sendComment = new Vue({
                         }
                     }
                 }
+                function getCookie(cname) {
+                    let name = cname + "=";
+                    let cookie = document.cookie.split(';');
+                    for(let i = 0, len = cookie.length; i < len; i++) {
+                        let c = cookie[i].trim();
+                        if (c.indexOf(name) == 0) {
+                            return c.substring(name.length, c.length);
+                        }
+                    }
+                    return "";
+                }
                 var reply = document.getElementById("comment_reply").value;
                 var replyName = document.getElementById("comment_reply_name").value;
                 var name = document.getElementById("comment_name").value;
                 var email = document.getElementById("comment_email").value;
                 var content = document.getElementById("comment_content").value;
+                if (!name) {
+                    name = getCookie("curUser");
+                }
                 axios({
                     method: "get",
                     url: "/addComment?bid=" + bid + "&parent=" + reply + "&userName=" + name + "&email=" + email + "&content=" + content + "&parentName=" + replyName
@@ -112,7 +130,7 @@ var blogComments = new Vue({
                 document.getElementById("comment_reply_name").value = userName;
                 location.href = "#send_comment";
             }
-        }
+        },
     },
     created: function () {
         var searcheUrlParams = location.search.indexOf("?") > -1 ? location.search.split("?")[1].split("&") : "";

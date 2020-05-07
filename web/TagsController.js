@@ -1,15 +1,14 @@
 var blogDao = require("../dao/BlogDao");
 var tagsDao = require("../dao/TagsDao");
 var tagBlogMappingDao = require("../dao/TagBlogMappingDao");
-var timeUtil = require("../util/TimeUtil");
 var respUtil = require("../util/RespUtil");
 var url = require("url");
 
 var path = new Map();
 
+// 获得全部标签并乱序返回
 function queryRandomTags(request, response) {
     tagsDao.queryAllTag(function (result) {
-        console.log(result);
         result.sort(function () {
             return Math.random() > 0.5 ? true : false;
         });
@@ -29,7 +28,6 @@ function queryByTag(request, response) {
             response.end();
         } else {
             tagBlogMappingDao.queryByTag(result[0].id, parseInt(params.page), parseInt(params.pageSize), function (result) {
-
                 var blogList = [];
                 for (var i = 0 ; i < result.length ; i ++) {
                     blogDao.queryBlogById(result[i].blog_id, function (result) {

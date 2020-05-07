@@ -6,12 +6,29 @@
     <link rel="stylesheet" href="./css/admin.css">
 </head>
 <body>
+    <div id="welcome"><p>huuuuu</p></div>
     <div class="wrapper">
         <ul>
             <li><a href="./edit_every_day.html">每日一句</a></li>
             <li><a href="./userManage.html">用户管理</a></li>
-            <li><a href="./adminManage.html">動態管理</a></li>
+            <li><a href="./blogManage.html">动态管理</a></li>
         </ul>
     </div>
+
+    <script>
+        var welcome = document.getElementById("welcome");
+            setInterval(function () {
+                var randomTop = Math.ceil(Math.random() * 250 + 50) + "px";
+                var randomSize = Math.ceil(Math.random() * 20 + 10) + "px";
+
+                var p = document.createElement("p");
+                p.style.top = randomTop;
+                p.style.fontSize = randomSize;
+                p.innerHTML = "欢迎你，管理员！"
+
+                welcome.append(p)
+
+            }, 1000)
+    </script>
 </body>
 </html>

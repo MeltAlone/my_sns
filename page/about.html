@@ -19,6 +19,7 @@
             <li><a href="/about.html">关于</a></li>
             <li><a href="/guestbook.html">留言</a></li>
             <li><a href="/chat.html">聊天室</a></li>
+            <li><a href="/api/chatBot.html">机器人</a></li>
         </ul>
         <div class="login_bar">
             <a href="/about.html" class="login">用户：<span id="curUserName">马大哈</span></a>
@@ -31,21 +32,37 @@
         </div>
     </div>
 </header>
+
 <div class="content">
     <div class="content_left">
         <div class="description" id="about_me">
             <div class="about_title">关于我</div>
             <p><span>昵称:</span>{{ person.name }}</p>
-            <p><span>性别:</span>{{ person.sex }}</p>
+            <p><span>性别:</span>{{ person.sex ? "男" : "女" }}</p>
             <p><span>绑定电话:</span>{{ person.phone }}</p>
             <p><span>邮箱:</span>{{ person.email }}</p>
             <p><span>所在地:</span>{{ person.address }}</p>
             <p><span>个性签名:</span>{{ person.description }}</p>
+            <p @click="showD" class="changeusermsg">修改信息</p>
+            <div v-if="showDiong" id="changeDiong">
+                <span id="close" @click="fadeD()">X</span>
+                <p>
+                    <input type="text" placeholder="更改绑定邮箱" v-model="change_email">
+                </p>
+                <p>
+                    <input type="text" placeholder="更改住址" v-model="change_address">
+                </p>
+                <p>
+                    <input type="text" placeholder="更改个性签名" v-model="change_description">
+                </p>
+                <p @click="changeMsg()">提交更改</p>
+
+            </div>
             <div class="about_title">关于动态</div>
-            <p><a href="./edit_blog.html">发布动态</a></p>
-            <p>多浏览动态</p>
-            <p>多评论</p>
-            <p>多留言</p>
+            <p class="blog_left">多浏览动态</p>
+            <p class="blog_left">多评论</p>
+            <p class="blog_left">多留言</p>
+            <p class="sendBlog"><a href="./edit_blog.html">发布动态</a></p>
         </div>
         <div class="blog_comments" id="blog_comments">
             <span class="blog_comments_msg">当前文章：{{total}} 条留言</span>
@@ -56,7 +73,7 @@
         </div>
 
         <div class="send_comment" id="send_comment">
-            <span>发表评论</span>
+            <span>给他/她留言</span>
             <div>
                 <input type="hidden" id="comment_reply" value="-1">
                 <input type="hidden" id="comment_reply_name" value="0">
@@ -101,10 +118,10 @@
         <div class="right_module">
             <div>友情链接</div>
             <span><a href="/">挨踢茶馆</a></span>
-            <span><a href="/">挨踢茶馆</a></span>
-            <span><a href="/">挨踢茶馆</a></span>
-            <span><a href="/">挨踢茶馆</a></span>
-            <span><a href="/">挨踢茶馆</a></span>
+            <span><a href="/">百度百科</a></span>
+            <span><a href="/">思否论坛</a></span>
+            <span><a href="/">维基百科</a></span>
+            <span><a href="/">中国知网</a></span>
         </div>
     </div>
 </div>

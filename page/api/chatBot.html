@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Robot</title>
+    <link rel="stylesheet" href="../css/robot.css">
+    <script>
+        function send(event) {
+            if (event instanceof KeyboardEvent && event.key != "Enter") {
+                return;
+            }
+            var val = document.getElementById("chatArea").value;
+            if (val == null || val == "") {
+                return;
+            }
+            var me = document.createElement("p");
+            me.setAttribute("class", "me")
+            me.innerHTML =  val + ":我";
+            document.getElementsByClassName("bot-content")[0].appendChild(me);
+            var ajax = new XMLHttpRequest();
+            ajax.open("get","https://developer.duyiedu.com/edu/turing/chat?text=" + val);
+            ajax.send();
+            ajax.onreadystatechange = function () {
+                if (ajax.readyState==4 &&ajax.status==200) {
+                    var temp = document.createElement("p");
+                    temp.setAttribute("class", "bot");
+                    temp.innerHTML = "机器人：" + JSON.parse(ajax.responseText).text;
+                    document.getElementsByClassName("bot-content")[0].appendChild(temp);
+                    document.getElementById("chatArea").value = "";
+                }
+
+            }
+        }
+        function getCookie(cname) {
+            let name = cname + "=";
+            let cookie = document.cookie.split(';');
+            for(let i = 0, len = cookie.length; i < len; i++) {
+                let c = cookie[i].trim();
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+        window.onload = function () {
+            var userArea = document.getElementById("curUserName")
+            userArea.innerHTML = getCookie("curUser")
+        }
+    </script>
+</head>
+<body>
+<header class="header">
+    <div class="container">
+        <a href="/index.html" class="title">Soul社交</a>
+        <ul class="menu">
+            <li><a href="/index.html">首页</a></li>
+            <li><a href="/sitemap.html">地图</a></li>
+            <li><a href="/about.html">关于</a></li>
+            <li><a href="/guestbook.html">留言</a></li>
+            <li><a href="/chat.html">聊天室</a></li>
+            <li><a href="/api/chatBot.html">机器人</a></li>
+        </ul>
+        <div class="login_bar">
+            <a href="/about.html" class="login">用户：<span id="curUserName"></span></a>
+            |
+            <a href="/login.html" class="register">注销</a>
+        </div>
+        <div class="search_bar">
+            <input type="text" placeholder="输入关键词查找">
+            <button>搜索</button>
+        </div>
+    </div>
+</header>
+<div class="content">
+    <div id="chat">
+        <div class="bot-head">聊天机器人</div>
+        <div class="bot-content"></div>
+        <div class="bot-input">
+            <input type="text" id="chatArea" onkeydown="send(event)"/>
+            <div id="sendBtn" onclick="send(event)">发送</div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

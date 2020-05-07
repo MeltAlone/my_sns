@@ -1,0 +1,213 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body{
+    background-image: url("../img/bg.jpg");
+    position: relative;
+    text-align: center;
+}
+
+.header {
+    width: 100%;
+    height: 50px;
+    background: #2F4F4F;
+    position: absolute;
+}
+
+.header::before{
+    background: #000 linear-gradient(to left, #4cd964, #5ac8fa, #007aff, #34aadc, #5856d6, #ff2d55);
+    content: '';
+    height: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.header .container{
+    position: absolute;
+    width: 1170px;
+    height: 45px;
+    left: calc(50% - 585px);
+    top: calc(50% - 20px);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.header .title{
+    position: absolute;
+    left: 0px;
+    display: block;
+    color: #fff;
+    line-height: 45px;
+    margin: 0px 15px;
+    font-size: 22px;
+}
+
+.header .menu{
+    height: 45px;
+    position: absolute;
+    top: 0px;
+    left: 130px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.header .menu > li{
+    height: 45px;
+    width: 58px;
+    color: #eeeeee;
+    font-size: 14px;
+    padding: 0px 5px;
+    line-height: 45px;
+    text-align: center;
+}
+
+.header .menu > li > a {
+    color: #fff;
+}
+
+.header .login_bar{
+    position: absolute;
+    right: 300px;
+    top: 0px;
+    line-height: 45px;
+    color: #fff;
+}
+
+.header .login_bar > a {
+    padding: 0 10px;
+    color: #fff;
+}
+
+.header .login_bar > a > span{
+    color: #00ff00;
+}
+
+.header .search_bar{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 45px;
+    width: 300px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.header .search_bar > input{
+    position: absolute;
+    right: 60px;
+    top: calc(50% - 17px);
+    height: 22px;
+    padding:  5px 10px;
+    border-radius: 8px;
+    outline: none;
+    font-size: 14px;
+    border: 1px solid;
+}
+
+.header .search_bar > button{
+    position: absolute;
+    right: 0px;
+    top: calc(50% - 17px);
+    width: 54px;
+    height: 34px;
+    padding: 5px 10px;
+    border-radius: 8px;
+    outline: none;
+    color: #555;
+    background: #fff;
+}
+
+.content {
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#chat {
+    width: 450px;
+    height: 700px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bot-head {
+    width: 100%;
+    height: 50px;
+    background: #2F4F4F;
+    line-height: 50px;
+    text-align: center;
+    color: white;
+    font-size: 20px;
+}
+
+.bot-content {
+    width: 100%;
+    height: 600px;
+    background-color: rgba(250,250,210,.5);
+    overflow-y:scroll;
+}
+.bot-content .me {
+    margin-top: 20px;
+    padding-right: 10px;
+    border: 1px solid #00c1de;
+    text-align: right;
+    color: #fff;
+    background-color: rgba(60,179,113, .5);
+}
+.bot-content .bot {
+    margin-top: 20px;
+    padding-let: 10px;
+    border: 1px solid #00c1de;
+    background-color: rgba(176,196,222, .5);
+    color: #fff;
+}
+
+.bot-input {
+    width: 100%;
+    height: 50px;
+    background: #D3D3D3;
+    position: relative;
+}
+
+#chatArea {
+    width: 350px;
+    height: 25px;
+    border: 0px;
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    outline: none;
+    border-radius: 5px;
+}
+
+#sendBtn {
+    width: 65px;
+    height: 25px;
+    background: yellowgreen;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    line-height: 25px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    top: 50%;
+    cursor: pointer;
+}

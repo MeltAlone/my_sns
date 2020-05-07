@@ -28,17 +28,7 @@ var articleList = new Vue({
         pageSize: 5,
         count: 100,
         pageNumList: [],
-        articleList: [
-            {
-                title: "即便是坑，我也想要拉你入伙！",
-                content: "前两天有网友跟我聊天，谈到互联网的前景，他很迷茫，要不要继续坚持下去，我说“如果是我，我在这一行肯定干不了多久，毕竟，我的人生规划，就是以后相夫教子。”我劝他，如果自己在这一行这么迷茫堪忧下去，只会耽误自己的时间，趁着年轻，重新找自己喜欢的工作和行业，并且坚持下去....",
-                date: "2020-01-20",
-                views: "101",
-                tags: "test1 test2",
-                id: "1",
-                link: ""
-            }
-        ]
+        articleList: []
     },
     computed: {
         jumpTo: function() {

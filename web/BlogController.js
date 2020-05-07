@@ -36,6 +36,17 @@ function queryBlogById(request, response) {
 }
 path.set("/queryBlogById", queryBlogById);
 
+function queryBlogByName(request, response) {
+    var params = url.parse(request.url, true).query;
+    console.log(params.name);
+    blogDao.queryBlogByName(params.name, function(result) {
+        response.writeHead(200);
+        response.write(respUtil.writeResult("success", "查询成功", result));
+        response.end();
+    });
+}
+path.set("/queryBlogByName", queryBlogByName);
+
 function queryBlogCount(request, response) {
     blogDao.queryBlogCount(function (result) {
         response.writeHead(200);
@@ -101,5 +112,18 @@ function insertTag(tag, blogId) {
 function insertTagBlogMapping(tagId, blogId) {
     tagBlogMappingDao.insertTagBlogMapping(tagId, blogId, timeUtil.getNow(), timeUtil.getNow(), function (result) {});
 }
+
+function deleteBlogById(request, response){
+    let params = url.parse(request.url, true).query;
+    console.log(params)
+
+    blogDao.deleteBlogById(params.id,function (result) {
+        response.writeHead(200);
+        response.write(respUtil.writeResult("success", "删除成功", result));
+        response.end();
+    });
+}
+
+path.set("/deleteBlogById", deleteBlogById)
 
 module.exports.path = path;

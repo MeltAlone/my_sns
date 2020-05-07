@@ -1,39 +1,30 @@
 let express = require("express");
 let globalConfig = require("./config");
 let loader = require("./loader");
+let cookie = require("cookie-parser");
 
 let app = new express();
 
-app.use(express.static("./page/", {index: "login.html"}));
+app.use(express.static(globalConfig["page_path"], {index: "login.html"}));
+app.use(cookie());
 
-app.post("/editEveryDay", loader.get("/editEveryDay"));
-app.get("/queryEveryDay", loader.get("/queryEveryDay"));
+loader.init(app); // get请求太多，放到loader中初始化吧
 
-app.post("/editBlog", loader.get("/editBlog"));
-app.get("/queryBlogByPage", loader.get("/queryBlogByPage"));
+app.get("/api/*", function (request, response, next) {
+    // express 拦截器判断用户是否登录
+    console.log(request.cookies);
+    if (request.cookies.curUser) {
+        next();
+    } else {
+        response.redirect("/login.html")
+    }
+})
 
-app.get("/queryBlogCount", loader.get("/queryBlogCount"));
-app.get("/queryBlogById", loader.get("/queryBlogById"));
-
-app.get("/addComment", loader.get("/addComment"));
-
-app.get("/queryRandomCode", loader.get("/queryRandomCode"));
-app.get("/queryCommentsByBlogId", loader.get("/queryCommentsByBlogId"));
-app.get("/queryCommentsCountByBlogId", loader.get("/queryCommentsCountByBlogId"));
-
-app.get("/queryAllBlog", loader.get("/queryAllBlog"));
-app.get("/queryRandomTags", loader.get("/queryRandomTags"));
-app.get("/queryHotBlog", loader.get("/queryHotBlog"));
-app.get("/queryNewComments", loader.get("/queryNewComments"));
-
-app.get("/queryByTag", loader.get("/queryByTag"));
-app.get("/queryByTagCount", loader.get("/queryByTagCount"));
-
-app.post("/addUser", loader.get("/addUser"));
-app.get("/queryUserByPhone", loader.get("/queryUserByPhone"));
-app.get("/queryAllUser", loader.get("/queryAllUser"));
+app.post("/editEveryDay", loader.pathMap.get("/editEveryDay"));
+app.post("/editBlog", loader.pathMap.get("/editBlog"));
+app.post("/addUser", loader.pathMap.get("/addUser"));
 
 
-app.listen(globalConfig.port, function() {
+app.listen(globalConfig["port"], function() {
     console.log("服务器已启动")
 })
