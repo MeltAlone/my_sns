@@ -89,7 +89,7 @@
                 <li v-for="comment in commentList">
                     <div>
                         <span>{{ comment.name }}</span>
-                        <span class="pull_right">{{ new Date(comment.date).getFullYear() }}年{{ new Date(comment.date).getMonth() + 1 }}月{{ new Date(comment.date).getDay() }}日{{ new Date(comment.date).getHours() + 1}}时{{ new Date(comment.date).getMinutes() }}分 </span>
+                        <span class="pull_right">{{ new Date(comment.date).getFullYear() }}年{{ new Date(comment.date).getMonth() + 1 }}月{{ new Date(comment.date).getDate() }}日{{ new Date(comment.date).getHours() + 1}}时{{ new Date(comment.date).getMinutes() }}分 </span>
                     </div>
                     <p>{{ comment.comment }}</p>
                 </li>

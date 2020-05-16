@@ -19,37 +19,67 @@
     <div class="left-menu">
         <dl>
             <dt>动态管理</dt>
-            <dd @click="changeToList()">动态列表</dd>
+            <dd  @click="changeToBlogList()">动态列表</dd>
+            <dd  @click="changeToCommentList()">评论列表</dd>
         </dl>
     </div>
     <div class="right-content">
         <div class="content">
-            <table border="0" >
-                <thead>
-                <tr>
-                    <th>用户</th>
-                    <th>标题</th>
-                    <th>标签</th>
-                    <th>内容</th>
-                    <th>浏览次数</th>
-                    <th>发布时间</th>
-                    <th>删除</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr v-for="(item, index) in blogList" v-bind:key="item.id">
-                    <td>{{ item.uname }}</td>
-                    <td>{{ item.title }}</td>
-                    <td>{{ item.tags }}</td>
-                    <td>{{ item.content }}</td>
-                    <td>{{ item.views }}</td>
-                    <td>{{ item.ctime }}</td>
-                    <td>
-                        <button @click="removeThis(index, item.id)" class="btn del">删除</button>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+            <div v-if="isShow" class="bloglist">
+                <table border="0" >
+                    <thead>
+                    <tr>
+                        <th>用户</th>
+                        <th>标题</th>
+                        <th>标签</th>
+                        <th>内容</th>
+                        <th>浏览次数</th>
+                        <th>发布时间</th>
+                        <th>删除</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="(item, index) in blogList" v-bind:key="item.id">
+                        <td>{{ item.uname }}</td>
+                        <td>{{ item.title }}</td>
+                        <td>{{ item.tags }}</td>
+                        <td>{{ item.content }}</td>
+                        <td>{{ item.views }}</td>
+                        <td>{{ item.ctime }}</td>
+                        <td>
+                            <button @click="removeThis(index, item.id)" class="btn del">删除</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div v-else class="commentlist">
+                <table border="0" >
+                    <thead>
+                    <tr>
+                        <th>用户</th>
+                        <th>邮箱</th>
+                        <th>内容</th>
+                        <th>发布时间</th>
+                        <th>修改时间</th>
+                        <th>删除</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="(item, index) in commentList" v-bind:key="item.id">
+                        <td>{{ item.user_name }}</td>
+                        <td>{{ item.email }}</td>
+                        <td>{{ item.comments }}</td>
+                        <td>{{ item.ctime }}</td>
+                        <td>{{ item.utime }}</td>
+                        <td>
+                            <button @click="removeThis(index, item.id)" class="btn del">删除</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
 
         </div>
     </div>

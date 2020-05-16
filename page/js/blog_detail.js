@@ -108,6 +108,7 @@ var sendComment = new Vue({
                     url: "/addComment?bid=" + bid + "&parent=" + reply + "&userName=" + name + "&email=" + email + "&content=" + content + "&parentName=" + replyName
                 }).then(function (resp) {
                     alert(resp.data.msg);
+                    window.reload();
                 });
             }
         }

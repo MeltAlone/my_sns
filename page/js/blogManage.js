@@ -1,7 +1,9 @@
 var blogManage = new Vue({
     el: "#app",
     data: {
-        blogList: []
+        blogList: [],
+        commentList: [],
+        isShow: true
     },
     methods: {
         removeThis(index, id) {
@@ -11,6 +13,12 @@ var blogManage = new Vue({
                 url: "/deleteBlogById?id=" + id
             })
         },
+        changeToCommentList(){
+            this.isShow = false;
+        },
+        changeToBlogList(){
+            this.isShow = true;
+        }
     },
     created(){
         axios({
@@ -18,6 +26,13 @@ var blogManage = new Vue({
             url: "/queryAllBlog"
         }).then(function(resp){
             blogManage.blogList = resp.data.data;
+            console.log(resp.data.data);
+        })
+        axios({
+            method: "get",
+            url: "/queryAllComments"
+        }).then(function(resp){
+            blogManage.commentList = resp.data.data;
             console.log(resp.data.data);
         })
     }

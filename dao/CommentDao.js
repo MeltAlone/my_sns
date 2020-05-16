@@ -61,7 +61,22 @@ function queryNewComments(size, success) {
     connection.end();
 }
 
+function queryAllComments(success) {
+    var querySql = "select * from comments";
+    var connection = dbutil.createConnection();
+    connection.connect();
+    connection.query(querySql, function (error, result) {
+        if (error == null) {
+            success(result);
+        } else {
+            console.log(error);
+        }
+    });
+    connection.end();
+}
+
 module.exports.insertComment = insertComment;
 module.exports.queryCommentsByBlogId = queryCommentsByBlogId;
 module.exports.queryCommentCountByBlogId = queryCommentCountByBlogId;
 module.exports.queryNewComments = queryNewComments;
+module.exports.queryAllComments = queryAllComments;

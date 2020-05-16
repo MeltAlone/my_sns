@@ -72,7 +72,7 @@ created: function () {
                 var temp = {};
                 temp.name = resp.data.data[i].user_name;
 
-                temp.date = parseInt(resp.data.data[i].ctime);
+                temp.date = +(resp.data.data[i].ctime);
                 temp.comment = resp.data.data[i].comments;
                 result.push(temp);
             }

@@ -181,3 +181,22 @@
     font-size: 20px;
     cursor: pointer;
 }
+
+.careAndFans{
+    width: 100%;
+    display: flex;
+
+}
+.careAndFans .care{
+    width: 50%;
+}
+
+.careAndFans .fans{
+    width: 50%;
+}
+
+.careAndFans span{
+    color: 	#3CB371;
+    font-weight: 600;
+
+}

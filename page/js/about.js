@@ -90,7 +90,9 @@ var AboutMe = new Vue({
         change_email: "",
         change_address: "",
         change_description: "",
-        showDiong: false
+        showDiong: false,
+        careList: [],
+        fansList: []
     },
     methods: {
         changeMsg(){
@@ -131,7 +133,21 @@ var AboutMe = new Vue({
             url: "/queryUserByName?name=" + name,
         }).then(res => {
             AboutMe.person = res.data.data[0];
-        })
+        });
+        axios({
+            method: "get",
+            url: "/searchCareByCarer?carer=" + name,
+        }).then(res => {
+            console.log(res.data);
+            AboutMe.fansList = res.data.data;
+        });
+        axios({
+            method: "get",
+            url: "/searchCareByFans?fans=" + name,
+        }).then(res => {
+            console.log(res.data);
+            AboutMe.careList = res.data.data;
+        });
     }
 })
 

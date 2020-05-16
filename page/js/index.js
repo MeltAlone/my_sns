@@ -61,7 +61,7 @@ var articleList = new Vue({
                             var tempTime = parseInt(result[i].ctime);
                             temp.title = result[i].title;
                             temp.content = result[i].content;
-                            temp.date = `${new Date(tempTime).getFullYear()}年${new Date(tempTime).getMonth() + 1} 月${new Date(tempTime).getDay()}日${new Date(tempTime).getHours() + 1}时${new Date(tempTime).getMinutes()}分`
+                            temp.date = `${new Date(tempTime).getFullYear()}年${new Date(tempTime).getMonth() + 1} 月${new Date(tempTime).getDate()}日${new Date(tempTime).getHours() + 1}时${new Date(tempTime).getMinutes()}分`
                             temp.views = result[i].views;
                             temp.tags = result[i].tags;
                             temp.id = result[i].id;
@@ -93,7 +93,7 @@ var articleList = new Vue({
                             var tempTime = parseInt(result[i].ctime);
                             temp.title = result[i].title;
                             temp.content = result[i].content;
-                            temp.date = `${new Date(tempTime).getFullYear()}年${new Date(tempTime).getMonth() + 1} 月${new Date(tempTime).getDay()}日${new Date(tempTime).getHours() + 1}时${new Date(tempTime).getMinutes()}分`
+                            temp.date = `${new Date(tempTime).getFullYear()}年${new Date(tempTime).getMonth() + 1} 月${new Date(tempTime).getDate()}日${new Date(tempTime).getHours() + 1}时${new Date(tempTime).getMinutes()}分`
                             temp.views = result[i].views;
                             temp.tags = result[i].tags;
                             temp.id = result[i].id;
@@ -141,6 +141,22 @@ var articleList = new Vue({
             return result;
         }
     },
+    methods:{
+        setCookie: function (cname, cvalue, exdays) {
+            var d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            var expires = "expires=" + d.toUTCString();
+            console.info(cname + "=" + cvalue + "; " + expires);
+            document.cookie = cname + "=" + cvalue + "; " + expires;
+            console.info(document.cookie);
+        },
+
+        searchUser(uname){
+            console.log(uname);
+            this.setCookie("searchUser",uname,1);
+            window.location.href = "./UserInfo.html";
+        }
+    },
     created: function () {
         this.getPage(this.page, this.pageSize);
     }
@@ -182,7 +198,7 @@ function getCookie(cname) {
 function setCookie(c_name,value,expire) {
     var date=new Date()
     date.setSeconds(date.getSeconds()+expire)
-    document.cookie=c_name+ "="+escape(value)+"; expires="+date.toGMTString()
+    document.cookie=c_name+ "="+value+"; expires="+date.toGMTString()
 }
 
 function delCookie(c_name){

@@ -51,8 +51,8 @@ var chat = new Vue({
             }).catch(function () {
                 console.log("发送失败");
             });
-        }, 1000);
-    }
+        }, 500);
+    },
 });
 
 function getCookie(cname) {

@@ -98,6 +98,53 @@ function changeUserMsg(name, email, address, description, success) {
     connection.end();
 }
 
+function addCare(carer, fans, success) {
+    var insertSql = "insert into cares (`carer`, `fans`) values (?, ?)";
+
+    var params = [carer, fans];
+    console.log(params);
+    var connection = dbutil.createConnection();
+    connection.connect();
+    connection.query(insertSql, params, function (error, result) {
+        if (error == null) {
+            success(result);
+        } else {
+            console.log(error);
+        }
+    });
+    connection.end();
+}
+
+function searchCareByCarer(name, success) {
+    var querySql = "select fans from cares where carer = ?;";
+    var params = [name];
+    var connection = dbutil.createConnection();
+    connection.connect();
+    connection.query(querySql, params, function (error, result) {
+        if (error == null) {
+            success(result);
+        } else {
+            console.log(error);
+        }
+    });
+    connection.end();
+}
+
+function searchCareByFans(name, success) {
+    var querySql = "select carer from cares where fans = ?;";
+    var params = [name];
+    var connection = dbutil.createConnection();
+    connection.connect();
+    connection.query(querySql, params, function (error, result) {
+        if (error == null) {
+            success(result);
+        } else {
+            console.log(error);
+        }
+    });
+    connection.end();
+}
+
 
 
 module.exports.insertUser = insertUser;
@@ -106,4 +153,7 @@ module.exports.queryUserByName = queryUserByName;
 module.exports.queryAllUser = queryAllUser;
 module.exports.deleteUserById = deleteUserById;
 module.exports.changeUserMsg = changeUserMsg;
+module.exports.addCare = addCare;
+module.exports.searchCareByCarer = searchCareByCarer;
+module.exports.searchCareByFans = searchCareByFans;
 

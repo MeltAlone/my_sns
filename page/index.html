@@ -40,7 +40,7 @@
             </div>
             <div class="article_list" id="article_list">
                 <div class="article" v-for="article in articleList">
-                    <div class="article_user"><a href="/about.html">{{ article.uname }}</a>发布了动态</div>
+                    <div class="article_user"><span @click="searchUser(article.uname)">{{ article.uname }}</span>发布了动态</div>
                     <a :href="article.link" class="article_title">{{ article.title }}</a>
                     <p class="article_content">{{ article.content }}</p>
                     <div class="article_foot">
@@ -73,7 +73,7 @@
                     <li v-for="comment in commentList">
                         <div>
                             <span>{{ comment.name }}</span>
-                            <span class="pull_right">{{ new Date(comment.date).getFullYear() }}年{{ new Date(comment.date).getMonth() + 1 }}月{{ new Date(comment.date).getDay() }}日{{ new Date(comment.date).getHours() + 1}}时{{ new Date(comment.date).getMinutes() }}分</span>
+                            <span class="pull_right">{{ new Date(comment.date).getFullYear() }}年{{ new Date(comment.date).getMonth() + 1 }}月{{ new Date(comment.date).getDate() }}日{{ new Date(comment.date).getHours() + 1}}时{{ new Date(comment.date).getMinutes() }}分</span>
                         </div>
                         <p>{{ comment.comment }}</p>
                     </li>

@@ -39,9 +39,10 @@
     font-size: 14px;
 }
 
-.article_user > a{
+.article_user > span{
     color: #00ff00;
     padding: 0 5px;
+    cursor: pointer;
 }
 
 .article{

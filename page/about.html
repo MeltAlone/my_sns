@@ -63,6 +63,17 @@
             <p class="blog_left">多评论</p>
             <p class="blog_left">多留言</p>
             <p class="sendBlog"><a href="./edit_blog.html">发布动态</a></p>
+            <div class="about_title">关注&粉丝</div>
+            <div class="careAndFans">
+                <div class="care">
+                    <span>我的关注:</span>
+                    <p v-for="care in careList">{{ care.carer }}</p>
+                </div>
+                <div class="fans">
+                    <span>我的粉丝:</span>
+                    <p v-for="fans in fansList">{{ fans.fans }}</p>
+                </div>
+            </div>
         </div>
         <div class="blog_comments" id="blog_comments">
             <span class="blog_comments_msg">当前文章：{{total}} 条留言</span>
@@ -109,7 +120,7 @@
                 <li v-for="comment in commentList">
                     <div>
                         <span>{{ comment.name }}</span>
-                        <span class="pull_right">{{ new Date(comment.date).getFullYear() }}年{{ new Date(comment.date).getMonth() + 1 }}月{{ new Date(comment.date).getDay() }}日{{ new Date(comment.date).getHours() + 1}}时{{ new Date(comment.date).getMinutes() }}分 </span>
+                        <span class="pull_right">{{ new Date(comment.date).getFullYear() }}年{{ new Date(comment.date).getMonth() + 1 }}月{{ new Date(comment.date).getDate() }}日{{ new Date(comment.date).getHours() + 1}}时{{ new Date(comment.date).getMinutes() }}分 </span>
                     </div>
                     <p>{{ comment.comment }}</p>
                 </li>

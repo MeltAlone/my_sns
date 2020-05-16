@@ -2,9 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <link rel="stylesheet" href="./css/UserInfo.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./js/axios.js"></script>
 </head>
 <body>
-$END$
+    <div id="app">
+        <div class="header">
+            <button @click="addCare()">{{ isAdd ? "添加关注" : "取消关注" }}</button>
+        </div>
+        <div class="user-info">
+            <p class="title">用户信息</p>
+            <p><span>昵称:</span>{{ userInfo.name }}</p>
+            <p><span>性别:</span>{{ userInfo.sex ? "男" : "女" }}</p>
+            <p><span>绑定电话:</span>{{ userInfo.phone }}</p>
+            <p><span>邮箱:</span>{{ userInfo.email }}</p>
+            <p><span>所在地:</span>{{ userInfo.address }}</p>
+            <p><span>个性签名:</span>{{ userInfo.description }}</p></li>
+
+        </div>
+        <div class="blog-list">
+            <p class="title">{{ userInfo.sex ? "他" : "她"}}的发布</p>
+            <ul>
+                <li v-for="blog in blogList"><a v-bind:href="blog.link">{{blog.title}}</a></li>
+            </ul>
+        </div>
+    </div>
+    <script src="js/UserInfo.js"></script>
 </body>
 </html>

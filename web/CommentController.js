@@ -55,4 +55,13 @@ function queryNewComments(request, response) {
 }
 path.set("/queryNewComments", queryNewComments);
 
+function queryAllComments(request, response) {
+    commentDao.queryAllComments(function (result) {
+        response.writeHead(200);
+        response.write(respUtil.writeResult("success", "评论成功", result));
+        response.end();
+    });
+}
+path.set("/queryAllComments", queryAllComments);
+
 module.exports.path = path;

@@ -62,7 +62,6 @@ path.set("/deleteUserById", deleteUserById)
 
 function changeUserMsg(request, response){
     let params = url.parse(request.url, true).query;
-    console.log(params);
 
     UserDao.changeUserMsg(params.name, params.email, params.address, params.description, function (result) {
         response.writeHead(200);
@@ -72,5 +71,42 @@ function changeUserMsg(request, response){
 }
 
 path.set("/changeUserMsg", changeUserMsg)
+
+function addCare(request, response){
+    let params = url.parse(request.url, true).query;
+
+    UserDao.addCare(params.carer, params.fans, function (result) {
+        response.writeHead(200);
+        response.write(respUtil.writeResult("success", "关注成功", result));
+        response.end();
+    });
+}
+
+path.set("/addCare", addCare)
+
+function searchCareByCarer(request, response){
+    let params = url.parse(request.url, true).query;
+    console.log(params);
+
+    UserDao.searchCareByCarer(params.carer, function (result) {
+        response.writeHead(200);
+        response.write(respUtil.writeResult("success", "关注成功", result));
+        response.end();
+    });
+}
+
+path.set("/searchCareByCarer", searchCareByCarer)
+
+function searchCareByFans(request, response){
+    let params = url.parse(request.url, true).query;
+
+    UserDao.searchCareByFans(params.fans, function (result) {
+        response.writeHead(200);
+        response.write(respUtil.writeResult("success", "关注成功", result));
+        response.end();
+    });
+}
+
+path.set("/searchCareByFans", searchCareByFans)
 
 module.exports.path = path;
